@@ -119,14 +119,8 @@ docker compose stats
 python fhir-aggregator-scripts/fhir-util.py count-resources 
 ```
 
-## Prepare new data for upload
+* ask the server to reindex the data
 
-* upload to public bucket
 ```bash
-./upload.sh
-```
-
-* create a new bulk import request
-```bash
-python create-bulk-import-request.py
+curl -X POST $AUTH $FHIR_BASE'/$reindex'
 ```
