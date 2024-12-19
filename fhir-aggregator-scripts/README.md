@@ -119,8 +119,19 @@ docker compose stats
 python fhir-aggregator-scripts/fhir-util.py count-resources 
 ```
 
-* ask the server to reindex the data
+* query resource counts:
+
+```bash
+python fhir-util.py count-resources
+```
+
+* ask the server to reindex the data (takes a while)
 
 ```bash
 curl -X POST $AUTH $FHIR_BASE'/$reindex'
+# monitor HAPI logs for progress
+# when complete ask server for aggregated counts
+python fhir-util.py get-resource-counts 
+
 ```
+
